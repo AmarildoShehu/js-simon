@@ -36,3 +36,28 @@ function displayNumbers(numbers) {
         getUserInput(numbers);
     }, 3000);
 }
+
+ // 4. Funzione per ottenere l'input dell'utente
+ function getUserInput(numbersToRemember) {
+    const userNumbers = [];
+    for (let i = 0; i < 5; i++) {
+        // 5. Funzione per ottenere l'input dell'utente
+         const userInput = prompt('Inserisci un numero:');
+         // Converte l'input in un numero intero
+         userNumbers.push(parseInt(userInput, 10));
+    }
+    // Chiamare la funzione per la fase di confronto dei numeri
+    compareNumbers(numbersToRemember, userNumbers);
+}
+
+// Funzione per confrontare i numeri e visualizzare i risultati
+function compareNumbers(originalNumbers, userNumbers) {
+    const correctNumbers = [];
+    for (let i = 0; i < 5; i++) {
+        if (originalNumbers[i] === userNumbers[i]) {
+            correctNumbers.push(originalNumbers[i]);
+        }
+    }
+    // Visualizza i risultati
+    alert(`Hai indovinato ${correctNumbers.length} numeri: ${correctNumbers.join(', ')}`);
+}
