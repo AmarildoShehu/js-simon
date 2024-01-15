@@ -11,15 +11,28 @@ console.log('JS OK');
 
 
 const numbersContainer = document.getElementById('numbers-container');
+ 
 
-
+const randomNumbers = generateRandomNumbers();
+displayNumbers(randomNumbers);
 //##### Funzioni ######
 
-// Funzione per generare numeri casuali
+// // 1. Funzione per generare numeri casuali
 function generateRandomNumbers() {
     const numbers = [];
     for (let i = 0; i < 5; i++) {
         numbers.push(Math.floor(Math.random() * 10) + 1); // Modifica se vuoi un range diverso
     }
     return numbers;
+}
+
+// 2. Funzione per visualizzare numeri in pagina
+function displayNumbers(numbers) {
+    numbersContainer.textContent = numbers.join(' ');
+    
+    // 3. Creare il timer di 30 secondi
+    setTimeout(() => {
+        // Chiamare la funzione per la fase di input dell'utente
+        getUserInput(numbers);
+    }, 3000);
 }
