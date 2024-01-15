@@ -15,6 +15,12 @@ const numbersContainer = document.getElementById('numbers-container');
 
 const randomNumbers = generateRandomNumbers();
 displayNumbers(randomNumbers);
+
+let timer = 30;
+
+
+
+
 //##### Funzioni ######
 
 // // 1. Funzione per generare numeri casuali
@@ -31,10 +37,17 @@ function displayNumbers(numbers) {
     numbersContainer.textContent = numbers.join(' ');
     
     // 3. Creare il timer di 30 secondi
-    setTimeout(() => {
-        // Chiamare la funzione per la fase di input dell'utente
-        getUserInput(numbers);
-    }, 3000);
+            const intervalId = setInterval(() => {
+                timer--;
+
+                // Nascondi i numeri subito dopo il timer
+                if (timer <= 0) {
+                    numbersContainer.classList.add('hidden');
+                    clearInterval(intervalId); // Interrompi l'intervallo
+                    // Chiamare la funzione per la fase di input dell'utente
+                    getUserInput(numbers);
+                }
+            }, 100); // Controlla ogni secondo
 }
 
  // 4. Funzione per ottenere l'input dell'utente
